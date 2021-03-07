@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
@@ -17,8 +17,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { from } from 'rxjs';
+import { PanelComponent } from './panel/panel.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent
+    },
   {
   path: 'home',
   component: HomeComponent
@@ -37,6 +42,14 @@ const routes: Routes = [
   component: ProductListComponent
   },
   {
+    path: 'todoList',
+    component: TodoListComponent
+  },
+  {
+    path: 'panel',
+    component: PanelComponent
+  },
+  {
   path: '**',
   component: PageNotFoundComponent
   }
@@ -50,12 +63,16 @@ const routes: Routes = [
     LoginComponent,
     PageNotFoundComponent,
     ProductListComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    PanelComponent,
+    TodoListComponent,
+    TodoItemComponent
    
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     RouterModule.forRoot(routes)
